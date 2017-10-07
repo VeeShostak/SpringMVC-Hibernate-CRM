@@ -5,6 +5,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 id="WebApp_ID" version="3.1">
   <display-name>spring-mvc-crud-demo</display-name>
 
+<!-- look for these welcome files in top down fashion. uses the first one it finds -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
