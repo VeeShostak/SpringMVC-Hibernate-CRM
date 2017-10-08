@@ -23,6 +23,12 @@
 	<div id="container">
 		<div id="content">
 		
+			<!-- button to add a customer (calls our spring controller mapping (showFormForAdd)) -->
+			<input type="button" value="Add Customer"
+				   onclick="window.location.href='showFormForAdd'; return false;"
+				   class="add-button"
+			/>
+		
 			<table>
 				<tr>
 					<th>First Name</th>

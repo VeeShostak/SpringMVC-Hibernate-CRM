@@ -17,10 +17,18 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDAO customerDAO;
 	
 	// delegate calls to dao
+	
 	@Override
 	@Transactional
 	public List<Customer> getCustomers() {
 		return customerDAO.getCustomers();
+	}
+
+	@Override
+	@Transactional
+	public void saveCustomer(Customer theCustomer) {
+
+		customerDAO.saveCustomer(theCustomer);
 	}
 
 	
