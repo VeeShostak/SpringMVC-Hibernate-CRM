@@ -28,7 +28,8 @@
 	
 		<form:form action="saveCustomer" modelAttribute="customer" method="POST">
 
-			<!-- Associate this data with customer id -->
+			<!-- need to associate this data with customer id -->
+			<!-- (calls setId/getId accordingly) -->
 			<form:hidden path="id" />
 					
 			<table>
