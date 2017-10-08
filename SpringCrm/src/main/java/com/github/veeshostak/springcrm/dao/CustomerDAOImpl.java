@@ -42,6 +42,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
+		
 		// spring saveOrUpdate() determines to save or update
 		// save: insert new customer if new pk
 		// update: update existing customer if pk exists
@@ -73,6 +74,36 @@ public class CustomerDAOImpl implements CustomerDAO {
 		theQuery.setParameter("customerId", theId);
 		
 		theQuery.executeUpdate();
+	}
+
+	@Override
+	public List<Customer> searchCustomers(String theSearchName) {
+	
+	    // get the current hibernate session
+	    Session currentSession = sessionFactory.getCurrentSession();
+	    
+	    Query theQuery = null;
+	    
+	    if (theSearchName != null && theSearchName.trim().length() > 0) {
+	
+	        // search for firstName or lastName
+	    	
+	        // the "like" clause and the "%" wildcard characters,
+	    		// allow us to search for substrings (ex. pat returns paterson, patel, ...)
+	        theQuery =currentSession.createQuery("FROM Customer c WHERE firstName LIKE :theName or lastName LIKE :theName", Customer.class);
+	        theQuery.setParameter("theName", "%" + theSearchName + "%");
+	
+	    }
+	    else {
+	        // theSearchName is empty, get all customers
+	        theQuery =currentSession.createQuery("from Customer", Customer.class);            
+	    }
+	    
+	    // execute query and get result list
+	    List<Customer> customers = theQuery.getResultList();
+	                 
+	    return customers;
+	    
 	}
 
 }
